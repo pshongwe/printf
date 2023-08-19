@@ -47,29 +47,29 @@ int print_string(va_list args, int *count)
  */
 int print_number(va_list args, int *count)
 {
-int divisor;
-int num;
-
-num = va_arg(args, int);
-if (num < 0)
-{
-num = -num;
-_putchar('-');
-(*count)++;
-}
-divisor = 1;
-
-while (num / divisor > 9)
-divisor *= 10;
-
-while (divisor > 0)
-{
-_putchar('0' + num / divisor);
-num %= divisor;
-divisor /= 10;
-(*count)++;
-}
-return (*count);
+	int divisor;
+	int num;
+	
+	num = va_arg(args, int);
+	if (num < 0)
+	{
+		num = -num;
+		_putchar('-');
+		(*count)++;
+	}
+	divisor = 1;
+	
+	while (num / divisor > 9)
+		divisor *= 10;
+	
+	while (divisor > 0)
+	{
+		_putchar('0' + num / divisor);
+		num %= divisor;
+		divisor /= 10;
+		(*count)++;
+	}
+	return (*count);
 }
 
 /**
@@ -80,42 +80,42 @@ return (*count);
  */
 void process_format(const char *format, va_list args, int *count)
 {
-int i;
-
-for (i = 0; format[i] && format[i] != '\0'; i++)
-{
-if (format[i] == '%' && format[i + 1] != '\0')
-{
-i++;
-switch (format[i])
-{
-case 'c':
-*count = print_char(args, count);
-break;
-case 's':
-*count = print_string(args, count);
-break;
-case '%':
-_putchar('%');
-(*count)++;
-break;
-case 'i':
-case 'd':
-*count = print_number(args, count);
-break;
-default:
-_putchar('%');
-_putchar(format[i]);
-*count += 2;
-break;
-}
-}
-else
-{
-_putchar(format[i]);
-(*count)++;
-}
-}
+	int i;
+	
+	for (i = 0; format[i] && format[i] != '\0'; i++)
+	{
+		if (format[i] == '%' && format[i + 1] != '\0')
+		{
+			i++;
+			switch (format[i])
+			{
+				case 'c':
+					*count = print_char(args, count);
+					break;
+				case 's':
+					*count = print_string(args, count);
+					break;
+				case '%':
+					_putchar('%');
+					(*count)++;
+					break;
+				case 'i':
+				case 'd':
+					*count = print_number(args, count);
+					break;
+				default:
+					_putchar('%');
+					_putchar(format[i]);
+					*count += 2;
+					break;
+			}
+		}
+		else
+		{
+		_putchar(format[i]);
+		(*count)++;
+		}
+	}
 }
 
 /**
