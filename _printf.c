@@ -85,6 +85,8 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	}
+	if (format[0] == '\0')
+		return (-1);
 	va_end(args);
 	return (count);
 }
