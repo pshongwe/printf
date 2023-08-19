@@ -19,35 +19,35 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-		switch (format[i])
-		{
-			case 'c':
-				c = va_arg(args, int);
-				_putchar('0' + c);
-				i++;
-				break;
-			case 's':
-				s = va_arg(args, char *);
-				if (s == NULL)
-					s = "(nil)";
-				while (*s != '\0')
-				{
-					_putchar(*s);
-					s++;
+			switch (format[i])
+			{
+				case 'c':
+					c = va_arg(args, int);
+					_putchar('0' + c);
 					i++;
-				}
-				
-				break;
-			case '%':
-				_putchar('%');
-				i++;
-				break;
-			default:
-				_putchar('%');
-				_putchar(*format);
-				i += 2;
-				break;
-		}
+					break;
+				case 's':
+					s = va_arg(args, char *);
+					if (s == NULL)
+						s = "(nil)";
+					while (*s != '\0')
+					{
+						_putchar(*s);
+						s++;
+						i++;
+					}
+					
+					break;
+				case '%':
+					_putchar('%');
+					i++;
+					break;
+				default:
+					_putchar('%');
+					_putchar(*format);
+					i += 2;
+					break;
+			}
 		}
 		else
 		{
