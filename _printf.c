@@ -11,8 +11,9 @@
  */
 int print_char(va_list args, int *count)
 {
-	char c = va_arg(args, int);
+	char c;
 
+	c = va_arg(args, int);
 	*count += _putchar(c);
 	return (*count);
 }
@@ -26,9 +27,10 @@ int print_char(va_list args, int *count)
  */
 int print_string(va_list args, int *count)
 {
-	char *s = va_arg(args, char *);
+	char *s;
 	int j;
 
+	s = va_arg(args, char *);
 	if (s == NULL)
 		s = "(null)";
 	for (j = 0; s[j] != '\0'; j++)
@@ -49,8 +51,11 @@ int print_string(va_list args, int *count)
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i, count = 0;
+	int i, count;
 
+	count = 0;
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
