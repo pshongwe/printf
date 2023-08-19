@@ -31,7 +31,7 @@ int print_string(va_list args, int *count)
 	s = va_arg(args, char *);
 	if (s == NULL)
 		s = "(null)";
-	for (j = 0; s[j] && s[j] != '\0'; j++)
+	for (j = 0; s[j] != '\0'; j++)
 	{
 		_putchar(s[j]);
 		(*count)++;
@@ -52,7 +52,7 @@ int _printf(const char *format, ...)
 	int i, count;
 
 	count = 0;
-	if (format == NULL)
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 	va_start(args, format);
 	for (i = 0; format[i] && format[i] != '\0'; i++)
