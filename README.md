@@ -1,2 +1,15 @@
-#printf
-this project is pair project, my partner in person of Pibo Shongwe a certified software engineer and I will collaborate together to deliver this project. i guess it will be eventful thanks to alx for creating this learning platform
+# printf
+This project is a pair project by collaborators Yemi and Pibo.
+
+- *Prototype*: `int _printf(const char *format, ...);` 
+- *Returns*: the number of characters printed (excluding the null byte used to end output to strings)
+write output to stdout, the standard output stream
+- `format` is a character string. The format string is composed of zero or more directives. See `man 3 printf` for more detail. You need to handle the following conversion specifiers:
+- `c`
+- `s`
+- `%`
+- `d`
+- `i`
+
+
+
