@@ -47,7 +47,6 @@ int print_string(va_list args, int *count)
  */
 int print_number(va_list args, int *count)
 {
-	int divisor;
 	int num;
 
 	num = va_arg(args, int);
@@ -57,18 +56,16 @@ int print_number(va_list args, int *count)
 		_putchar('-');
 		(*count)++;
 	}
-	divisor = 1;
-
-	while (num / divisor > 9)
-		divisor *= 10;
-
-	while (divisor > 0)
+	else
 	{
-		_putchar('0' + num / divisor);
-		num %= divisor;
-		divisor /= 10;
-		(*count)++;
+		num = *count;
 	}
+	
+	if (num / 10)
+	{
+		print_number(num / 10);
+	}
+	_putchar((num % 10) + '0');
 	return (*count);
 }
 
