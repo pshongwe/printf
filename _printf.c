@@ -40,6 +40,85 @@ int print_string(va_list args, int *count)
 }
 
 /**
+ * print_number - Prints an integer using putchar
+ * @args: Variable argument list containing
+ * @count: A pointer to the counter for characters printed
+ * Return: Updated count of characters printed.
+ */
+int print_number(va_list args, int *count)
+{
+int divisor;
+int num;
+
+num = va_arg(args, int);
+if (num < 0)
+{
+num = -num;
+_putchar('-');
+(*count)++;
+}
+divisor = 1;
+
+while (num / divisor > 9)
+divisor *= 10;
+
+while (divisor > 0)
+{
+_putchar('0' + num / divisor);
+num %= divisor;
+divisor /= 10;
+(*count)++;
+}
+return (*count);
+}
+
+/**
+ * process_format - Process the format string and handle the conversion specifiers.
+ * @format: The format string specifying the types of arguments to be printed.
+ * @args: The va_list of arguments.
+ * @count: Pointer to the counter of characters printed.
+ */
+void process_format(const char *format, va_list args, int *count)
+{
+int i;
+
+for (i = 0; format[i] && format[i] != '\0'; i++)
+{
+if (format[i] == '%' && format[i + 1] != '\0')
+{
+i++;
+switch (format[i])
+{
+case 'c':
+*count = print_char(args, count);
+break;
+case 's':
+*count = print_string(args, count);
+break;
+case '%':
+_putchar('%');
+(*count)++;
+break;
+case 'i':
+case 'd':
+*count = print_number(args, count);
+break;
+default:
+_putchar('%');
+_putchar(format[i]);
+*count += 2;
+break;
+}
+}
+else
+{
+_putchar(format[i]);
+(*count)++;
+}
+}
+}
+
+/**
  * _printf - printf string according to format specified
  * @format: The format string specifying the
  * types of arguments to be printed.
@@ -47,44 +126,13 @@ int print_string(va_list args, int *count)
  * (excluding the null byte used to end output to strings)
  */
 int _printf(const char *format, ...)
-{
-	va_list args;
-	int i, count;
+{	va_list args;
+	int count = 0;
 
-	count = 0;
+	va_start(args, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-	va_start(args, format);
-	for (i = 0; format[i] && format[i] != '\0'; i++)
-	{
-		if (format[i] == '%' && format[i + 1] != '\0')
-		{
-			i++;
-			switch (format[i])
-			{
-				case 'c':
-					count = print_char(args, &count);
-					break;
-				case 's':
-					count = print_string(args, &count);
-					break;
-				case '%':
-					_putchar('%');
-					count++;
-					break;
-				default:
-					_putchar('%');
-					_putchar(format[i]);
-					count += 2;
-					break;
-			}
-		}
-		else
-		{
-			_putchar(format[i]);
-			count++;
-		}
-	}
+	process_format(format, args, &count);
 	va_end(args);
 	return (count);
 }
