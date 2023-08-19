@@ -47,8 +47,8 @@ int print_string(va_list args, int *count)
  */
 int print_number(va_list args, int *count)
 {
-	int divisor;
-	int num;
+	unsigned int divisor;
+	unsigned int num;
 
 	num = va_arg(args, int);
 	if (num < 0)
