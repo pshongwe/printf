@@ -51,7 +51,7 @@ int print_number(va_list args, int *count)
 	unsigned int num;
 
 	num = va_arg(args, int);
-	if (num < 0)
+	if ((signed int)num < 0)
 	{
 		num = -num;
 		_putchar('-');
@@ -62,7 +62,7 @@ int print_number(va_list args, int *count)
 	while (num / divisor > 9)
 		divisor *= 10;
 
-	while (divisor > 0)
+	while ((signed int)divisor > 0)
 	{
 		_putchar('0' + num / divisor);
 		num %= divisor;
