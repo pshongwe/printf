@@ -49,7 +49,7 @@ int print_number(va_list args, int *count)
 {
 	int divisor;
 	int num;
-	
+
 	num = va_arg(args, int);
 	if (num < 0)
 	{
@@ -58,10 +58,10 @@ int print_number(va_list args, int *count)
 		(*count)++;
 	}
 	divisor = 1;
-	
+
 	while (num / divisor > 9)
 		divisor *= 10;
-	
+
 	while (divisor > 0)
 	{
 		_putchar('0' + num / divisor);
@@ -73,7 +73,8 @@ int print_number(va_list args, int *count)
 }
 
 /**
- * process_format - Process the format string and handle the conversion specifiers.
+ * process_format - Process the format string and
+ * handle the conversion specifiers.
  * @format: The format string specifying the types of arguments to be printed.
  * @args: The va_list of arguments.
  * @count: Pointer to the counter of characters printed.
@@ -81,7 +82,7 @@ int print_number(va_list args, int *count)
 void process_format(const char *format, va_list args, int *count)
 {
 	int i;
-	
+
 	for (i = 0; format[i] && format[i] != '\0'; i++)
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
