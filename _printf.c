@@ -32,7 +32,7 @@ int print_string(va_list args, int *count)
 
 	s = va_arg(args, char *);
 	if (s == NULL)
-		s = "(nil)";
+		s = "(null)";
 	for (j = 0; s[j] != '\0'; j++)
 	{
 		_putchar(s[j]);
