@@ -23,7 +23,6 @@ write output to stdout, the standard output stream
 ---
 
 ## Task
---
 These are the tasks for printf project, it will be linked to their corresponding files.
 
 
