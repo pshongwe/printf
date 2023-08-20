@@ -26,7 +26,10 @@ write output to stdout, the standard output stream
 These are the tasks for printf project, it will be linked to their corresponding files.
 
 ### [0. I'm not going anywhere. You can print that wherever you want to. I'm here and I'm a Spur for life](./_printf.c)
-* Write a function that produces output according to format.
+Write a function that produces output according to format.
+- c
+- s
+- %
 
 
 
