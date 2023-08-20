@@ -10,7 +10,7 @@ write output to stdout, the standard output stream
     This function handles the following conversion specifiers:
   
 | Specifier  | Description |
-|------------|------------|
+|------------|-------------|
 | `c`        | Prints a single character. The argument must be an int that represents the ASCII value of the character.|
 | `s`        | Prints a null-terminated string (pointer to char).|
 | `%`        | Prints a literal percent sign (%). No argument is required.|
