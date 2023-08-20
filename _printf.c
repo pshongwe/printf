@@ -105,6 +105,9 @@ void process_format(const char *format, va_list args, int *count)
 				case 'd':
 					*count = print_number(args, count);
 					break;
+				case 'b':
+					*count = print_binary(args, count);
+					break;
 				default:
 					_putchar('%');
 					_putchar(format[i]);

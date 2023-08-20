@@ -11,31 +11,32 @@
  */
 int print_binary(va_list args, int *count)
 {
-unsigned int num = va_arg(args, unsigned int);
-unsigned int mask = 1 << (sizeof(unsigned int) * 8 - 1);
+	unsigned int num;
+	unsigned int mask;
 
-if (num == 0)
-{
-_putchar('0');
-(*count)++;
-return (*count);
-}
+	num = va_arg(args, unsigned int);
+	mask = 1 << (sizeof(unsigned int) * 8 - 1);
 
-while (mask > 0)
-{
-if (num & mask)
-{
-_putchar('1');
-(*count)++;
-}
-else
-{
-_putchar('0');
-(*count)++;
-}
-mask >>= 1;
-}
+	if (num == 0)
+	{
+		_putchar('0');
+		(*count)++;
+		return (*count);
+	}
 
-return (*count);
-}
+	while (mask > 0)
+	{
+		if (num & mask)
+		{
+			_putchar('1');
+			(*count)++;
+		}
+		else
+		{
+			_putchar('0');
+			(*count)++;
+		}
+		mask >>= 1;
+	}
+	return (*count);
 }
