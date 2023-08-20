@@ -13,7 +13,7 @@ int print_binary(va_list args, int *count)
 {
     unsigned int num;
     unsigned int mask;
-
+    
     num = va_arg(args, unsigned int);
     mask = 1 << (sizeof(unsigned int) * 8 - 1);
     if (num == 0)
@@ -22,7 +22,7 @@ int print_binary(va_list args, int *count)
         (*count)++;
         return (*count);
     }
-
+    
     while (mask > 0)
     {
         if (num & mask)
