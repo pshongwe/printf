@@ -6,7 +6,7 @@
 #include <stddef.h>
 
 /* constants */
-#define BUFSIZE 1024
+#define BUFSIZE 512
 
 /* Protypes */
 typedef int (*print_function)(va_list args, int *count);
