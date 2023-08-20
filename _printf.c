@@ -1,5 +1,15 @@
 #include "main.h"
 
+print_function print_functions[BUFSIZE] = {
+    ['c'] = print_char,
+    ['s'] = print_string,
+    ['%'] = NULL,
+    ['i'] = print_number,
+    ['d'] = print_number,
+	['b'] = print_binary,
+	['r'] = print_reverse,
+};
+
 /**
  * print_char - Prints a character and increments the count.
  * @args: Variable argument list containing
@@ -74,56 +84,6 @@ int print_number(va_list args, int *count)
 }
 
 /**
- * process_format - Process the format string and
- * handle the conversion specifiers.
- * @format: The format string specifying the types of arguments to be printed.
- * @args: The va_list of arguments.
- * @count: Pointer to the counter of characters printed.
- */
-void process_format(const char *format, va_list args, int *count)
-{
-	int i;
-
-	for (i = 0; format[i] && format[i] != '\0'; i++)
-	{
-		if (format[i] == '%' && format[i + 1] != '\0')
-		{
-			i++;
-			switch (format[i])
-			{
-				case 'c':
-					*count = print_char(args, count);
-					break;
-				case 's':
-					*count = print_string(args, count);
-					break;
-				case '%':
-					_putchar('%');
-					(*count)++;
-					break;
-				case 'i':
-				case 'd':
-					*count = print_number(args, count);
-					break;
-				case 'b':
-					*count = print_binary(args, count);
-					break;
-				default:
-					_putchar('%');
-					_putchar(format[i]);
-					*count += 2;
-					break;
-			}
-		}
-		else
-		{
-		_putchar(format[i]);
-		(*count)++;
-		}
-	}
-}
-
-/**
  * _printf - printf string according to format specified
  * @format: The format string specifying the
  * types of arguments to be printed.
@@ -131,14 +91,37 @@ void process_format(const char *format, va_list args, int *count)
  * (excluding the null byte used to end output to strings)
  */
 int _printf(const char *format, ...)
-{	va_list args;
-	int count;
+{
+va_list args;
+int i, count;
 
-	count = 0;
-	va_start(args, format);
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (-1);
-	process_format(format, args, &count);
-	va_end(args);
-	return (count);
+count = 0;
+va_start(args, format);
+if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+return (-1);
+for (i = 0; format[i] && format[i] != '\0'; i++)
+{
+print_function func = print_functions[(int)format[i]];
+if (format[i] == '%' && format[i + 1] != '\0')
+{
+i++;
+if (func)
+{
+	count += func(args, &count);
+}
+else
+{
+	_putchar('%');
+	_putchar(format[i]);
+	count += 2;
+}
+}
+else
+{
+_putchar(format[i]);
+count++;
+}
+}
+va_end(args);
+return (count);
 }
