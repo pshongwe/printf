@@ -13,10 +13,11 @@ int print_binary(va_list args, int *count)
 {
 	unsigned int num;
 	unsigned int mask;
+	int leading_zeros;
 
 	num = va_arg(args, unsigned int);
 	mask = 1 << (sizeof(unsigned int) * 8 - 1);
-
+	leading_zeros = 1;
 	if (num == 0)
 	{
 		_putchar('0');
@@ -28,10 +29,11 @@ int print_binary(va_list args, int *count)
 	{
 		if (num & mask)
 		{
+			leading_zeros = 0;
 			_putchar('1');
 			(*count)++;
 		}
-		else
+		else if (!leading_zeros)
 		{
 			_putchar('0');
 			(*count)++;
