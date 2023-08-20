@@ -20,6 +20,9 @@ write output to stdout, the standard output stream
 *Examples*:
 - `_printf("Let's try to printf a simple sentence.\n");` <br>prints "Let's try to printf a simple sentence", followed by a new line
 - `_printf("This is a number: %d", 39);` <br> prints "This is a number: 39"
+---
+
+## Task
 
 
 
