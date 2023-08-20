@@ -18,6 +18,7 @@ write output to stdout, the standard output stream
 | `i`        | Prints a signed decimal integer. The argument must be of type int. |
 
 *Examples*:
+
 - `_printf("Let's try to printf a simple sentence.\n");` <br>prints "Let's try to printf a simple sentence", followed by a new line
 - `_printf("This is a number: %d", 39);` <br> prints "This is a number: 39"
 ---
