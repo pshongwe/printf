@@ -29,7 +29,7 @@ These are the tasks for printf project, it will be linked to their corresponding
 Write a function that produces output according to this format.
 - `c`
 - `s`
-- %
+- `%
 
 
 
