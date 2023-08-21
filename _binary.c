@@ -5,9 +5,9 @@
  * @args: Variable argument list containing the integer to be printed
  * Return: Updated count of characters printed.
  */
-int print_binary(void *args)
+int print_binary(va_list args)
 {
-    unsigned int num = *(unsigned int *)args;
+    unsigned int num = va_arg(args, unsigned int);
     unsigned int mask;
     int leading_zeros, count;
 
