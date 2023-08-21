@@ -5,7 +5,7 @@
  * @args: Variable argument list (unused)
  * Return: Updated count of characters printed.
  */
-int print_percent(void *args)
+int print_percent(va_list args)
 {
     (void)args;
     _putchar('%');
@@ -17,10 +17,10 @@ int print_percent(void *args)
  * @args: Variable argument list containing the character to be printed
  * Return: Updated count of characters printed.
  */
-int print_else(void *args)
+int print_else(va_list args)
 {
-    char c = *(char *)args;
-    _putchar(c);
+    char c = va_arg(args, char);
     _putchar('%');
+    _putchar(c);
     return (2);
 }
