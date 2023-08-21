@@ -33,7 +33,7 @@ int j, count;
 s = va_arg(args, char *);
 count = 0;
 if (s == NULL)
-s = "(null)";
+s = "(nil)";
 for (j = 0; s[j] != '\0'; j++)
 {
 _putchar(s[j]);
@@ -76,7 +76,6 @@ divisor /= 10;
 count++;
 }
 return (count);
-
 }
 
 /**
@@ -99,7 +98,6 @@ for (i = 0; format[i] && format[i] != '\0'; i++)
 if (format[i] == '%' && format[i + 1] != '\0')
 {
 i++;
-if (format[i])
 func = get_print_func(format[i]);
 if (func)
 {
