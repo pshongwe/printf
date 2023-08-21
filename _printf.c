@@ -105,9 +105,10 @@ count += func(args);
 }
 else
 {
-_putchar('%');
+/*_putchar('%');
 _putchar(format[i]);
-count += 2;
+count += 2;*/
+return (-1);
 }
 }
 else
