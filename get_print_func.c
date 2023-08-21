@@ -1,8 +1,13 @@
 #include "main.h"
 
-int (*get_print_func(const char *s))(void *)
+/**
+ * get_print_func - function pointer that selects the correct function
+ * @s: the given chars
+ * Return: pointer to the function
+ */
+int (*get_print_func(const char s))(va_list)
 {
-    static const printer_t funcs[] = {
+printer_t funcs[] = {
         {"c", print_char},
         {"s", print_string},
         {"%", print_percent},
@@ -12,6 +17,7 @@ int (*get_print_func(const char *s))(void *)
         {"r", print_reverse},
         {NULL, print_else}
     };
+	
     int i = 0;
     int j = 0;
 
