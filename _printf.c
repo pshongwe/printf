@@ -8,11 +8,11 @@
  * @count: Pointer to the counter tracking printed characters.
  * Return: Updated count of characters printed.
  */
-int print_char(void *args)
+int print_char(va_list args)
 {
     char c;
 
-    c = *((char *)args);
+    c = va_arg(args, char);
     return _putchar(c);
 }
 
@@ -24,12 +24,12 @@ int print_char(void *args)
  * @count: Pointer to the counter tracking printed characters.
  * Return: Updated count of characters printed.
  */
-int print_string(void *args)
+int print_string(va_list args)
 {
     char *s;
     int j, count;
 
-    s = *((char **)args);
+    s = va_arg(args, char *);
     count = 0;
     if (s == NULL)
         s = "(null)";
@@ -48,13 +48,13 @@ int print_string(void *args)
  * @count: A pointer to the counter for characters printed
  * Return: Updated count of characters printed.
  */
-int print_number(void *args)
+int print_number(va_list args)
 {
 	unsigned int divisor;
 	unsigned int num;
 	int count;
 
-	num = *((int *)args);
+	num = va_arg(args, unsigned int);
 	count = 0;
 	if ((signed int)num < 0)
 	{
