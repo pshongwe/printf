@@ -101,7 +101,7 @@ int _printf(const char *format, ...)
             func = get_print_func(format[i]);
             if (func)
             {
-                count = func(va_arg(args, void *));
+                count += func(args);
             }
             else
             {
