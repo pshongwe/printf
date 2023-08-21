@@ -33,7 +33,7 @@ int j, count;
 s = va_arg(args, char *);
 count = 0;
 if (s == NULL)
-s = "(nil)";
+s = "(null)";
 for (j = 0; s[j] != '\0'; j++)
 {
 _putchar(s[j]);
