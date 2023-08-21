@@ -18,9 +18,10 @@ printer_t funcs[] = {
 {'\0', NULL}
 };
 
-int i = 0;
+int i;
 
-while (funcs[i].printer)
+i = 0;
+while (funcs[i].printer != '\0')
 {
 if (funcs[i].printer == s)
 return (funcs[i].f);
