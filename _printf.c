@@ -99,7 +99,7 @@ for (i = 0; format[i] && format[i] != '\0'; i++)
 if (format[i] == '%' && format[i + 1] != '\0')
 {
 i++;
-if (format[i] && format[i + 1] != '\0')
+if (format[i])
 func = get_print_func(format[i]);
 if (func)
 {
