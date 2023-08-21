@@ -7,9 +7,9 @@
  */
 int print_percent(va_list args)
 {
-    (void)args;
-    _putchar('%');
-    return (1);
+(void)args;
+_putchar('%');
+return (1);
 }
 
 /**
@@ -19,8 +19,8 @@ int print_percent(va_list args)
  */
 int print_else(va_list args)
 {
-    char c = va_arg(args, int);
-    _putchar('%');
-    _putchar('0' + c);
-    return (2);
+char c = va_arg(args, int);
+_putchar('%');
+_putchar('0' + c);
+return (2);
 }
