@@ -12,8 +12,8 @@ int print_char(va_list args)
 {
     char c;
 
-    c = va_arg(args, char);
-    return _putchar(c);
+    c = va_arg(args, int);
+    return _putchar('0' + c);
 }
 
 
@@ -89,7 +89,7 @@ int _printf(const char *format, ...)
 {
     va_list args;
     int i, count;
-    int (*func)(void *);
+    int (*func)(va_list);
 
     count = 0;
     va_start(args, format);
@@ -98,7 +98,7 @@ int _printf(const char *format, ...)
         if (format[i] == '%' && format[i + 1] != '\0')
         {
             i++;
-            func = get_print_func(&(format[i]));
+            func = get_print_func(format[i]);
             if (func)
             {
                 count = func(va_arg(args, void *));

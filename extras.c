@@ -19,8 +19,8 @@ int print_percent(va_list args)
  */
 int print_else(va_list args)
 {
-    char c = va_arg(args, char);
+    char c = va_arg(args, int);
     _putchar('%');
-    _putchar(c);
+    _putchar('0' + c);
     return (2);
 }

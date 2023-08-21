@@ -23,7 +23,7 @@ typedef struct printer
 int _putchar(char c);
 int _printf(const char *format, ...);
 int print_char(va_list args);
-int print_string(void *argsva_list args);
+int print_string(va_list args);
 int print_number(va_list args);
 int print_binary(va_list args);
 int print_reverse(va_list args);

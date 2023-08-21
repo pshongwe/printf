@@ -8,18 +8,17 @@
 int (*get_print_func(const char s))(va_list)
 {
 printer_t funcs[] = {
-        {"c", print_char},
-        {"s", print_string},
-        {"%", print_percent},
-        {"i", print_number},
-        {"d", print_number},
-        {"b", print_binary},
-        {"r", print_reverse},
-        {NULL, print_else}
+        {'c', print_char},
+        {'s', print_string},
+        {'%', print_percent},
+        {'i', print_number},
+        {'d', print_number},
+        {'b', print_binary},
+        {'r', print_reverse},
+        {0, print_else}
     };
 	
     int i = 0;
-    int j = 0;
 
     while (funcs[i].printer)
     {
