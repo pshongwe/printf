@@ -19,7 +19,7 @@ if (num == 0)
 {
 _putchar('0');
 count++;
-return count;
+return (count);
 }
 
 while (mask > 0)
@@ -38,5 +38,5 @@ count++;
 mask >>= 1;
 }
 
-return count;
+return (count);
 }
