@@ -1,38 +1,35 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-/* headers */
+/* Headers */
 #include <stdarg.h>
 #include <stddef.h>
 #include <stdlib.h>
 
 /**
  * @printer: The printer
- * @print_function: function pointer
+ * @f: function pointer
  */
 typedef struct printer
 {
-	char *printer;
-	int (*f)(va_list args, int *count);
+    char *printer;
+    int (*f)(void *);
 } printer_t;
 
-typedef int (*f)(va_list args, int *count);
-
-/* constants */
+/* Constants */
 #define BUFSIZE 512
 
-/* Protypes */
+/* Prototypes */
 int _putchar(char c);
 int _printf(const char *format, ...);
-int print_char(va_list args, int *count);
-int print_string(va_list args, int *count);
-int print_number(va_list args, int *count);
-int print_binary(va_list args, int *count);
-int print_reverse(va_list args, int *count);
-int _strcmp(char *s1, char *s2);
-int (*get_print_func(char *s))(va_list, int *);
+int print_char(void *args);
+int print_string(void *args);
+int print_number(void *args);
+int print_binary(void *args);
+int print_reverse(void *args);
+int (*get_print_func(const char *s))(void *);
 int _strlen(char *s);
-int print_percent(va_list args, int *count);
-int print_else(va_list args, int *count);
+int print_percent(void *args);
+int print_else(void *args);
 
 #endif /* MAIN_H */

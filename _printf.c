@@ -8,14 +8,14 @@
  * @count: Pointer to the counter tracking printed characters.
  * Return: Updated count of characters printed.
  */
-int print_char(va_list args, int *count)
+int print_char(void *args)
 {
-	char c;
+    char c;
 
-	c = va_arg(args, int);
-	*count += _putchar(c);
-	return (*count);
+    c = *((char *)args);
+    return _putchar(c);
 }
+
 
 /**
  * print_string - Prints a string and increments the count.
@@ -24,21 +24,23 @@ int print_char(va_list args, int *count)
  * @count: Pointer to the counter tracking printed characters.
  * Return: Updated count of characters printed.
  */
-int print_string(va_list args, int *count)
+int print_string(void *args)
 {
-	char *s;
-	int j;
+    char *s;
+    int j, count;
 
-	s = va_arg(args, char *);
-	if (s == NULL)
-		s = "(null)";
-	for (j = 0; s[j] != '\0'; j++)
-	{
-		_putchar(s[j]);
-		(*count)++;
-	}
-	return (*count);
+    s = *((char **)args);
+    count = 0;
+    if (s == NULL)
+        s = "(null)";
+    for (j = 0; s[j] != '\0'; j++)
+    {
+        _putchar(s[j]);
+        count++;
+    }
+    return (count);
 }
+
 
 /**
  * print_number - Prints an integer using putchar
@@ -46,17 +48,19 @@ int print_string(va_list args, int *count)
  * @count: A pointer to the counter for characters printed
  * Return: Updated count of characters printed.
  */
-int print_number(va_list args, int *count)
+int print_number(void *args)
 {
 	unsigned int divisor;
 	unsigned int num;
+	int count;
 
-	num = va_arg(args, int);
+	num = *((int *)args);
+	count = 0;
 	if ((signed int)num < 0)
 	{
 		num = -num;
 		_putchar('-');
-		(*count)++;
+		count++;
 	}
 	divisor = 1;
 
@@ -68,9 +72,9 @@ int print_number(va_list args, int *count)
 		_putchar('0' + num / divisor);
 		num %= divisor;
 		divisor /= 10;
-		(*count)++;
+		count++;
 	}
-	return (*count);
+	return (count);
 
 }
 
@@ -83,42 +87,36 @@ int print_number(va_list args, int *count)
  */
 int _printf(const char *format, ...)
 {
-va_list args;
-int i, count;
-int (*func)(va_list, int *);
-char *temp;
+    va_list args;
+    int i, count;
+    int (*func)(void *);
 
-count = 0;
-va_start(args, format);
-for (i = 0; format[i] && format[i] != '\0'; i++)
-{
-/*if (!func)
-{
-printf("Error\n");
-exit(99);
-}*/
-if (format[i] == '%' && format[i + 1] != '\0')
-{
-i++;
-temp = &(format[i]);
-func = get_print_func(temp);
-if (func)
-{
-	count += func(args, &count);
+    count = 0;
+    va_start(args, format);
+    for (i = 0; format[i] && format[i] != '\0'; i++)
+    {
+        if (format[i] == '%' && format[i + 1] != '\0')
+        {
+            i++;
+            func = get_print_func(&(format[i]));
+            if (func)
+            {
+                count = func(va_arg(args, void *));
+            }
+            else
+            {
+                _putchar('%');
+                _putchar(format[i]);
+                count += 2;
+            }
+        }
+        else
+        {
+            _putchar(format[i]);
+            count++;
+        }
+    }
+    va_end(args);
+    return count;
 }
-else
-{
-	_putchar('%');
-	_putchar(format[i]);
-	count += 2;
-}
-}
-else
-{
-_putchar(format[i]);
-count++;
-}
-}
-va_end(args);
-return (count);
-}
+
