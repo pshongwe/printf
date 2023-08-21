@@ -12,8 +12,8 @@
  */
 typedef struct printer
 {
-    char *printer;
-    int (*f)(void *);
+    char printer;
+    int (*f)(va_list);
 } printer_t;
 
 /* Constants */
@@ -22,14 +22,14 @@ typedef struct printer
 /* Prototypes */
 int _putchar(char c);
 int _printf(const char *format, ...);
-int print_char(void *args);
-int print_string(void *args);
-int print_number(void *args);
-int print_binary(void *args);
-int print_reverse(void *args);
-int (*get_print_func(const char *s))(void *);
+int print_char(va_list args);
+int print_string(void *argsva_list args);
+int print_number(va_list args);
+int print_binary(va_list args);
+int print_reverse(va_list args);
+int (*get_print_func(const char s))(va_list);
 int _strlen(char *s);
-int print_percent(void *args);
-int print_else(void *args);
+int print_percent(va_list args);
+int print_else(va_list args);
 
 #endif /* MAIN_H */
