@@ -21,6 +21,6 @@ int print_else(va_list args)
 {
 char c = va_arg(args, int);
 _putchar('%');
-_putchar('0' + c);
+_putchar(c);
 return (2);
 }
