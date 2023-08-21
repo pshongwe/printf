@@ -1,14 +1,5 @@
 #include "main.h"
-
-print_function print_functions[BUFSIZE] = {
-    ['c'] = print_char,
-    ['s'] = print_string,
-    ['%'] = NULL,
-    ['i'] = print_number,
-    ['d'] = print_number,
-	['b'] = print_binary,
-	['r'] = print_reverse,
-};
+#include <stdio.h>
 
 /**
  * print_char - Prints a character and increments the count.
@@ -94,17 +85,23 @@ int _printf(const char *format, ...)
 {
 va_list args;
 int i, count;
+int (*func)(va_list, int *);
+char *temp;
 
 count = 0;
 va_start(args, format);
-if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-return (-1);
 for (i = 0; format[i] && format[i] != '\0'; i++)
 {
-print_function func = print_functions[(int)format[i]];
+/*if (!func)
+{
+printf("Error\n");
+exit(99);
+}*/
 if (format[i] == '%' && format[i + 1] != '\0')
 {
 i++;
+temp = &(format[i]);
+func = get_print_func(temp);
 if (func)
 {
 	count += func(args, &count);

@@ -4,20 +4,34 @@
 /* headers */
 #include <stdarg.h>
 #include <stddef.h>
+#include <stdlib.h>
 
-/* constants */
-#define BUFSIZE 1024
+/**
+ * struct printer - Struct printer
+ *
+ * @printer: The printer
+ * @print_function: function pointer
+ */
+typedef struct printer
+{
+	char *printer;
+	int (*f)(va_list args, int *count);
+} printer_t;
+
+typedef int (*f)(va_list args, int *count);
 
 /* Protypes */
-typedef int (*print_function)(va_list args, int *count);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int print_char(va_list args, int *count);
 int print_string(va_list args, int *count);
 int print_number(va_list args, int *count);
-void process_format(const char *format, va_list args, int *count);
 int print_binary(va_list args, int *count);
 int print_reverse(va_list args, int *count);
+int _strcmp(char *s1, char *s2);
+int (*get_print_func(char *s))(va_list, int *);
 int _strlen(char *s);
+int print_percent(va_list args, int *count);
+int print_else(va_list args, int *count);
 
 #endif /* MAIN_H */
