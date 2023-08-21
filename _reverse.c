@@ -5,9 +5,9 @@
  * @args: Variable argument list containing additional arguments
  * Return: Updated count of characters printed.
  */
-int print_reverse(void *args)
+int print_reverse(va_list args)
 {
-    char *input = (char *)args;
+    char *input = va_arg(args, char *);
     int i, length, count;
 
     length = _strlen(input);
