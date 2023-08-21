@@ -23,12 +23,8 @@ printer_t funcs[] = {
 
     while (funcs[i].printer)
     {
-        j = 0;
-        while (funcs[i].printer[j] == s[j] && s[j] != '\0')
-            j++;
-
-        if (funcs[i].printer[j] == '\0' && s[j] == '\0')
-            return funcs[i].f;
+        if (funcs[i].printer == s)
+            return (funcs[i].f);
 
         i++;
     }
