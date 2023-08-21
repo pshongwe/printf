@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
+<<<<<<< HEAD
 /**
  * struct printer - Struct printer
  *
@@ -19,6 +20,10 @@ typedef struct printer
 } printer_t;
 
 typedef int (*f)(va_list args, int *count);
+=======
+/* constants */
+#define BUFSIZE 512
+>>>>>>> 67898cf5999b953c6b3b6f88f650853b43bd2806
 
 /* Protypes */
 int _putchar(char c);
