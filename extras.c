@@ -86,26 +86,25 @@ count = 0;
 if (s == NULL)
 s = "(null)";
 
-for (i = 0; s[i] != '\0'; i++)
+for (i = 0; str[i] != '\0'; i++)
 {
-if ((s[i] >= 0 && s[i] < 32) || s[i] >= 127)
+if (str[i] >= 32 && str[i] < 127)
 {
-_putchar('\\');
-_putchar('x');
-if (s[i] < 16) {
-_putchar('0');
-}
-value = (unsigned char)s[i];
-hex_digits = "0123456789ABCDEF";
-
-_putchar(hex_digits[value >> 4]);
-_putchar(hex_digits[value & 0xF]);
-count += 4;
+_putchar(str[i]);
+count++;
 }
 else
 {
-_putchar(s[i]);
-count++;
+_putchar('\\');
+_putchar('x');
+if ((unsigned char)str[i] < 16)
+_putchar('0');
+count += 3;
+
+value = (unsigned char)s[i];
+hex_digits = "0123456789ABCDEF";
+_putchar(hex_digits[value >> 4]);
+_putchar(hex_digits[value & 0xF]);
 }
 }
 
