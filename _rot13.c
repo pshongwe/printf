@@ -31,7 +31,7 @@ return (NULL);
 */
 char *rot13(va_list args)
 {
-char *found, str*;
+char *found, *str;
 char *input;
 char *output;
 int i;
