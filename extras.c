@@ -49,7 +49,7 @@ buffer[i] = hex_digits[(uintptr_t)ptr & 0xf];
 ptr = (void *)((uintptr_t)ptr >> 4);
 }
 
-for (i = 0; i < sizeof(void *) * 2; i++)
+for (i = 0; (long unsigned int)i < sizeof(void *) * 2; i++)
 {
 _putchar(buffer[i]);
 count++;
