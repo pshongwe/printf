@@ -70,3 +70,39 @@ count++;
 return (count);
 }
 
+/**
+ * handle_custom_string - Handles the custom string specifier %S
+ * @args: Variable argument list containing the string to be printed
+ * Return: Count of characters printed
+ */
+int handle_custom_string(va_list args)
+{
+char *s;
+int count;
+
+s = va_arg(args, char *);
+count = 0;
+if (s == NULL)
+s = "(null)";
+
+for (int i = 0; s[i] != '\0'; i++)
+{
+if ((s[i] >= 0 && s[i] < 32) || s[i] >= 127)
+{
+_putchar('\\');
+_putchar('x');
+if (s[i] < 16) {
+_putchar('0');
+}
+printf("%X", (unsigned char)s[i]);
+count += 4;
+}
+else
+{
+_putchar(s[i]);
+count++;
+}
+}
+
+return (count);
+}
