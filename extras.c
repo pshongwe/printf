@@ -37,7 +37,7 @@ void *ptr;
 uintptr_t uintptr;
 int count;
 
-ptr = va_arg(args, void *)
+ptr = va_arg(args, void *);
 uintptr = (uintptr_t)ptr;
 count = 0;
 _putchar('0');
