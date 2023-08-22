@@ -7,6 +7,7 @@
 #include <stdlib.h>
 
 /**
+ * struct printer - struct printer
  * @printer: The printer
  * @f: function pointer
  */
