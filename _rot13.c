@@ -27,12 +27,14 @@ return (NULL);
 int rot13(va_list args)
 {
 char *str, *found;
-char input[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-char output[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+char *input;
+char *output;
 int i, count;
 char *rotated_str;
 
 str = va_arg(args, char *);
+input = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+output = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 if (str == NULL)
 str = "(null)";
 rotated_str = malloc(_strlen(str));
