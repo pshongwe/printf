@@ -48,11 +48,13 @@ if (uintptr == 0)
 _putchar('0');
 count += 3;
 }
-else {
-char hexDigits[] = "0123456789abcdef";
+else
+{
+char *hexDigits;
 char hexRepresentation[16];
 int i;
 
+hexDigits = "0123456789abcdef";
 for (i = 0; uintptr > 0; i++)
 {
 hexRepresentation[i] = hexDigits[uintptr % 16];
