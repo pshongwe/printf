@@ -77,8 +77,9 @@ return (count);
  */
 int handle_custom_string(va_list args)
 {
-char *s;
+char *s, *hex_digits;
 int count;
+unsigned char value;
 
 s = va_arg(args, char *);
 count = 0;
@@ -94,7 +95,11 @@ _putchar('x');
 if (s[i] < 16) {
 _putchar('0');
 }
-printf("%X", (unsigned char)s[i]);
+value = (unsigned char)s[i];
+hex_digits = "0123456789ABCDEF";
+
+_putchar(hex_digits[value >> 4]);
+_putchar(hex_digits[value & 0xF]);
 count += 4;
 }
 else
