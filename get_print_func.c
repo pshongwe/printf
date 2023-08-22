@@ -17,6 +17,7 @@ printer_t funcs[] = {
 {'r', print_reverse},
 {'R', rot13},
 {'p', handle_pointer},
+{'S', handle_custom_string},
 {'\0', NULL}
 };
 
