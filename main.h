@@ -12,8 +12,8 @@
  */
 typedef struct printer
 {
-    char printer;
-    int (*f)(va_list);
+char printer;
+int (*f)(va_list);
 } printer_t;
 
 /* Constants */
