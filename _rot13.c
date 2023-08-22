@@ -29,13 +29,14 @@ return (NULL);
 * @str: input string
 * Return: result string
 */
-char *rot13(char *str)
+char *rot13(va_list args)
 {
-char *found;
+char *found, str*;
 char *input;
 char *output;
 int i;
 
+str = va_arg(args, char *);
 input = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 output = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 for (i = 0; str[i] != '\0'; i++)
