@@ -12,7 +12,7 @@ char *_strchr(char *s, char c)
 while (*s)
 {
 if (*s == c)
-return s;
+return (s);
 s++;
 }
 
@@ -38,12 +38,13 @@ str = "(null)";
 rotated_str = malloc(_strlen(str));
 count = 0;
 
-for (i = 0; str[i] != '\0'; i++) {
+for (i = 0; str[i] != '\0'; i++)
+{
 found = _strchr(input, str[i]);
-if (found) {
+if (found)
 rotated_str[i] = output[found - input];
-}
-else {
+else
+{
 rotated_str[i] = str[i];
 }
 }
