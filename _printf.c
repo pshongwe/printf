@@ -5,7 +5,6 @@
 * print_char - Prints a character and increments the count.
 * @args: Variable argument list containing
 * the character to be printed.
-* @count: Pointer to the counter tracking printed characters.
 * Return: Updated count of characters printed.
 */
 int print_char(va_list args)
@@ -22,7 +21,6 @@ return (1);
 * print_string - Prints a string and increments the count.
 * @args: Variable argument list containing
 * the string to be printed.
-* @count: Pointer to the counter tracking printed characters.
 * Return: Updated count of characters printed.
 */
 int print_string(va_list args)
@@ -44,7 +42,6 @@ return (count);
 /**
 * print_number - Prints an integer using putchar
 * @args: Variable argument list containing
-* @count: A pointer to the counter for characters printed
 * Return: Updated count of characters printed.
 */
 int print_number(va_list args)
