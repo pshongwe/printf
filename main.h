@@ -32,5 +32,7 @@ int (*get_print_func(const char s))(va_list);
 int _strlen(char *s);
 int print_percent(va_list args);
 int print_else(va_list args);
+char *rot13(char *str);
+char *_strchr(char *s, char c);
 
 #endif /* MAIN_H */
