@@ -37,6 +37,9 @@ char *output;
 int i, count;
 
 str = va_arg(args, char *);
+if (str == NULL)
+str = "(null)";
+
 count = 0;
 input = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 output = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
