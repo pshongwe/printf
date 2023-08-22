@@ -32,8 +32,6 @@ char output[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 int i, count;
 char *rotated_str;
 
-if (rotated_str == NULL)
-return (-1);
 str = va_arg(args, char *);
 if (str == NULL)
 str = "(null)";
