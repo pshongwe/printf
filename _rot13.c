@@ -37,7 +37,7 @@ input = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 output = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 if (str == NULL)
 str = "(null)";
-rotated_str = malloc(_strlen(str));
+rotated_str = malloc(_strlen(str) + 1);
 count = 0;
 
 for (i = 0; str[i] != '\0'; i++)
@@ -57,5 +57,6 @@ while (rotated_str[count] != '\0')
 _putchar(rotated_str[count]);
 count++;
 }
+free(rotated_str);
 return (count);
 }
