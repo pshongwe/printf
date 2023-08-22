@@ -48,7 +48,7 @@ if (found)
 str[i] = output[found - input];
 }
 }
-while (output != '\0')
+while (output[count] != '\0')
 {
 _putchar(output[count]);
 count++;
