@@ -26,7 +26,7 @@ else
 buffer[buffer_index++] = c;
 count++;
 
-if (buffer_index >= BUFSIZE - 1) // Leave room for null terminator
+if (buffer_index >= BUFSIZE - 1)
 {
 write(1, buffer, buffer_index);
 buffer_index = 0;
