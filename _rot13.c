@@ -11,46 +11,41 @@ char *_strchr(char *s, char c)
 {
 int i;
 
-while (1)
+while (*s)
 {
-i = *s++;
-
-if (i == c)
-return (s - 1);
-
-if (i == 0)
+if (*s == c)
+return s;
+s++;
+}
 
 return (NULL);
-}
 }
 
 /**
 * rot13 - encode string using rot13
-* @str: input string
-* Return: result string
+* @args: va_list containing the string to be encoded
+* Return: count of characters printed
 */
 int rot13(va_list args)
 {
-char *found, *str;
-char *input;
-char *output;
-int i, count;
+char *str;
+char input[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+char output[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+int i, count = 0;
 
 str = va_arg(args, char *);
 if (str == NULL)
 str = "(null)";
 
-count = 0;
-input = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-output = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 for (i = 0; str[i] != '\0'; i++)
 {
-found = _strchr(input, str[i]);
+char *found = _strchr(input, str[i]);
 if (found)
 {
 str[i] = output[found - input];
 }
 }
+
 while (str[count] != '\0')
 {
 _putchar(str[count]);
