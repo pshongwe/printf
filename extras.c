@@ -86,18 +86,18 @@ count = 0;
 if (s == NULL)
 s = "(null)";
 
-for (i = 0; str[i] != '\0'; i++)
+for (i = 0; s[i] != '\0'; i++)
 {
-if (str[i] >= 32 && str[i] < 127)
+if (s[i] >= 32 && s[i] < 127)
 {
-_putchar(str[i]);
+_putchar(s[i]);
 count++;
 }
 else
 {
 _putchar('\\');
 _putchar('x');
-if ((unsigned char)str[i] < 16)
+if ((unsigned char)s[i] < 16)
 _putchar('0');
 count += 3;
 
