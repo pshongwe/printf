@@ -34,11 +34,11 @@ char *rotated_str;
 
 if (rotated_str == NULL)
 return (-1);
-rotated_str = malloc(strlen(str));
 str = va_arg(args, char *);
-count = 0;
 if (str == NULL)
 str = "(null)";
+rotated_str = malloc(_strlen(str));
+count = 0;
 
 for (i = 0; str[i] != '\0'; i++) {
 found = _strchr(input, str[i]);
