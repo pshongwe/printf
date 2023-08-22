@@ -26,27 +26,33 @@ return (NULL);
 */
 int rot13(va_list args)
 {
-char *str;
+char *str, *found;
 char input[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 char output[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-int i, count = 0;
+int i, count;
+char *rotated_str;
 
+if (rotated_str == NULL)
+return (-1);
+rotated_str = malloc(strlen(str));
 str = va_arg(args, char *);
+count = 0;
 if (str == NULL)
 str = "(null)";
 
-for (i = 0; str[i] != '\0'; i++)
-{
-char *found = _strchr(input, str[i]);
-if (found)
-{
-str[i] = output[found - input];
+for (i = 0; str[i] != '\0'; i++) {
+found = _strchr(input, str[i]);
+if (found) {
+rotated_str[i] = output[found - input];
+}
+else {
+rotated_str[i] = str[i];
 }
 }
 
-while (str[count] != '\0')
+while (rotated_str[count] != '\0')
 {
-_putchar(str[count]);
+_putchar(rotated_str[count]);
 count++;
 }
 return (count);
