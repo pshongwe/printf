@@ -78,7 +78,7 @@ return (count);
 int handle_custom_string(va_list args)
 {
 char *s, *hex_digits;
-int count;
+int count, i;
 unsigned char value;
 
 s = va_arg(args, char *);
@@ -86,7 +86,7 @@ count = 0;
 if (s == NULL)
 s = "(null)";
 
-for (int i = 0; s[i] != '\0'; i++)
+for (i = 0; s[i] != '\0'; i++)
 {
 if ((s[i] >= 0 && s[i] < 32) || s[i] >= 127)
 {
