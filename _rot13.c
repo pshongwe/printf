@@ -29,14 +29,15 @@ return (NULL);
 * @str: input string
 * Return: result string
 */
-char *rot13(va_list args)
+int rot13(va_list args)
 {
 char *found, *str;
 char *input;
 char *output;
-int i;
+int i, count;
 
 str = va_arg(args, char *);
+count = 0;
 input = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 output = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 for (i = 0; str[i] != '\0'; i++)
@@ -47,5 +48,10 @@ if (found)
 str[i] = output[found - input];
 }
 }
-return (str);
+while (output != '\0')
+{
+_putchar(output[count]);
+count++;
+}
+return (count);
 }
