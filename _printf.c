@@ -103,11 +103,15 @@ if (func)
 {
 count += func(args);
 }
-else
+else if (!func && format[i] != '\0')
 {
 _putchar('%');
 _putchar(format[i]);
 count += 2;
+}
+else
+{
+return (-1);
 }
 }
 else

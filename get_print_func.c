@@ -15,7 +15,7 @@ printer_t funcs[] = {
 {'d', print_number},
 {'b', print_binary},
 {'r', print_reverse},
-{'\0', print_else}
+{'\0', NULL}
 };
 
 int i;
@@ -25,7 +25,6 @@ while (funcs[i].printer != '\0')
 {
 if (funcs[i].printer == s)
 return (funcs[i].f);
-
 i++;
 }
 
