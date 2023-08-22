@@ -18,7 +18,7 @@ int (*f)(va_list);
 } printer_t;
 
 /* Constants */
-#define BUFSIZE 512
+#define BUFSIZE 1024
 
 /* Prototypes */
 int _putchar(char c);
