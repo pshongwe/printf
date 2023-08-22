@@ -16,6 +16,7 @@ printer_t funcs[] = {
 {'b', print_binary},
 {'r', print_reverse},
 {'R', rot13},
+{'p', handle_pointer},
 {'\0', NULL}
 };
 
