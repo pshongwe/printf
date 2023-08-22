@@ -50,6 +50,7 @@ else
 rotated_str[i] = str[i];
 }
 }
+rotated_str[i] = '\0';
 
 while (rotated_str[count] != '\0')
 {
