@@ -46,17 +46,31 @@ return (count);
 */
 int print_number(va_list args)
 {
-int num;
-int charCount;
+unsigned int divisor;
+unsigned int num;
+int count;
 
-charCount = 0;
-while ((num = va_arg(args, int)) != -1)
+num = va_arg(args, unsigned int);
+count = 0;
+if ((signed int)num < 0)
 {
-charCount += _putchar(num + '0');
-charCount += _putchar(' ');
+num = -num;
+_putchar('-');
+count++;
 }
-charCount += _putchar('\n');
-return (charCount);
+divisor = 1;
+
+while (num / divisor > 9)
+divisor *= 10;
+
+while ((signed int)divisor > 0)
+{
+_putchar('0' + num / divisor);
+num %= divisor;
+divisor /= 10;
+count++;
+}
+return (count);
 }
 
 /**
