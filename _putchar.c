@@ -10,7 +10,7 @@
  */
 int _putchar(char c)
 {
-static char buffer[BUFSIZE];
+/*static char buffer[BUFSIZE];
 static int buffer_index, count;
 
 buffer_index = 0;
@@ -34,4 +34,6 @@ buffer_index = 0;
 }
 
 return (count);
+*/
+return (write(1, &c, 1));
 }
