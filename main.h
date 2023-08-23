@@ -34,7 +34,5 @@ int print_percent(va_list args);
 int print_else(va_list args);
 int rot13(va_list args);
 char *_strchr(char *s, char c);
-/*int handle_pointer(va_list args);
-int handle_custom_string(va_list args);*/
 
 #endif /* MAIN_H */
